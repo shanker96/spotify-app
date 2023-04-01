@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import {
   BrowserRouter as Router,
-  Switch,
+  Routes,
   Route,
   useLocation,
 } from 'react-router-dom';
@@ -67,23 +67,14 @@ function App() {
             <StyledLogoutButton onClick={logout}>Log Out</StyledLogoutButton>
             <Router>
               <ScrollToTop />
-              <Switch>
-                <Route path="/top-artists">
-                  <TopArtists />
-                </Route>
-                <Route path="/top-tracks">
-                <TopTracks />
-                </Route>
-                <Route path="/playlists/:id">
-                  <Playlist />
-                </Route>
-                <Route path="/playlists">
-                  <Playlists />
-                </Route>
-                <Route path="/">
-                  <Profile />
-                </Route>
-              </Switch>
+              <Routes>
+              <Route exact path='/top-artists' element={<TopArtists/>}/>
+              <Route exact path='/top-tracks' element={<TopTracks/>}/>
+              <Route exact path='/top-artists' element={<TopArtists/>}/>
+              <Route exact path='/playlists/:id' element={<Playlist/>}/>
+              <Route exact path='/playlists' element={<Playlists/>}/>
+              <Route exact path='/' element={<Profile/>}/>
+              </Routes>
             </Router>
           </>
         )}
